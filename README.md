@@ -1,5 +1,7 @@
 # Next Movie Picker
 
+Demo Link : https://www.youtube.com/watch?v=I_sRrsM_nYk
+
 Chrome extension (Manifest V3) that helps you pick what to watch next. You start with your **top 3 favourite movies**, then get **one recommendation at a time** and can **rate each pick from 1–5** to steer future suggestions.
 
 Data and ratings stay in the extension; recommendations use [The Movie Database (TMDB)](https://www.themoviedb.org/) API.
