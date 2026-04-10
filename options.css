@@ -1,0 +1,69 @@
+* {
+  /* Border box sizing for predictable widths */
+  box-sizing: border-box;
+}
+body {
+  /* System UI font */
+  font-family: system-ui, Segoe UI, sans-serif;
+  margin: 0;
+  padding: 24px;
+  /* Dark theme background */
+  background: #0f1419;
+  color: #e7ecf1;
+}
+.panel {
+  /* Limit line length on wide monitors */
+  max-width: 480px;
+}
+h1 {
+  font-size: 1.25rem;
+  margin: 0 0 12px;
+}
+.hint {
+  font-size: 0.875rem;
+  color: #9aa7b2;
+  line-height: 1.45;
+  margin: 0 0 16px;
+}
+a {
+  /* Link accent */
+  color: #7cb8ff;
+}
+label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+  color: #9aa7b2;
+}
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #2a3441;
+  background: #1a222d;
+  color: #e7ecf1;
+  font-size: 0.95rem;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #3d8bfd;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover {
+  /* Slight brighten on hover */
+  filter: brightness(1.08);
+}
+.status {
+  font-size: 0.85rem;
+  color: #7dcea0;
+}

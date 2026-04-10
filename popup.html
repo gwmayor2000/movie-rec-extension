@@ -1,0 +1,78 @@
+<!DOCTYPE html> <!-- Tells the browser this is HTML5 -->
+<html lang="en"> <!-- Root element; language helps accessibility and translation -->
+  <head> <!-- Metadata and assets not shown as page body -->
+    <meta charset="UTF-8" /> <!-- Character encoding for Unicode text -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsive scaling on small popup width -->
+    <title>Next Movie Picker</title> <!-- Shown in browser tab when options open in tab; popup may ignore -->
+    <link rel="stylesheet" href="popup.css" /> <!-- Loads styles for this popup -->
+  </head> <!-- End of head -->
+  <body> <!-- Visible content root -->
+    <div id="app" class="app"> <!-- Main layout wrapper with padding from .app -->
+      <header class="header"> <!-- Top row: title + API key link -->
+        <h1>Next Movie Picker</h1> <!-- Extension name heading -->
+        <a href="#" id="openOptions" class="link">API key</a> <!-- Opens options page via JS (preventDefault on #) -->
+      </header> <!-- End header -->
+
+      <section id="noKey" class="card hidden"> <!-- Shown when TMDB key is missing; hidden by default -->
+        <p>Add your TMDB API key in settings to continue.</p> <!-- Instruction text -->
+        <button type="button" id="goOptions" class="btn primary">Open settings</button> <!-- Navigates to options page -->
+      </section> <!-- End noKey -->
+
+      <section id="setup" class="card"> <!-- Step: pick three favourite films -->
+        <p class="lead">Enter your <strong>top 3 favourite movies</strong>. We use them to seed recommendations.</p> <!-- Explains purpose -->
+        <div class="fav-grid"> <!-- Vertical stack of three search rows -->
+          <div class="fav-field"> <!-- Row 1: search + suggestions + picked label -->
+            <label>1</label> <!-- Slot number -->
+            <input type="text" data-slot="0" class="fav-input" placeholder="Search title…" autocomplete="off" /> <!-- Typing triggers TMDB search -->
+            <ul class="suggest hidden" data-slot="0"></ul> <!-- Dropdown list of search hits -->
+            <div class="picked hidden" data-picked="0"></div> <!-- Green check line after a film is chosen -->
+          </div> <!-- End fav-field 1 -->
+          <div class="fav-field"> <!-- Row 2 -->
+            <label>2</label> <!-- Slot number -->
+            <input type="text" data-slot="1" class="fav-input" placeholder="Search title…" autocomplete="off" /> <!-- Second search field -->
+            <ul class="suggest hidden" data-slot="1"></ul> <!-- Suggestions for slot 1 -->
+            <div class="picked hidden" data-picked="1"></div> <!-- Confirmation for slot 1 -->
+          </div> <!-- End fav-field 2 -->
+          <div class="fav-field"> <!-- Row 3 -->
+            <label>3</label> <!-- Slot number -->
+            <input type="text" data-slot="2" class="fav-input" placeholder="Search title…" autocomplete="off" /> <!-- Third search field -->
+            <ul class="suggest hidden" data-slot="2"></ul> <!-- Suggestions for slot 2 -->
+            <div class="picked hidden" data-picked="2"></div> <!-- Confirmation for slot 2 -->
+          </div> <!-- End fav-field 3 -->
+        </div> <!-- End fav-grid -->
+        <p id="setupStatus" class="setup-status hidden" aria-live="polite"></p> <!-- Error or helper text for setup -->
+        <button type="button" id="startRecs" class="btn primary" disabled>Start recommendations</button> <!-- Saves favourites and fetches first rec -->
+      </section> <!-- End setup -->
+
+      <section id="recommend" class="card hidden"> <!-- One recommendation at a time; hidden until active -->
+        <p class="eyebrow">Suggested next watch</p> <!-- Small section label -->
+        <div class="rec-body"> <!-- Horizontal: poster + text -->
+          <img id="recPoster" class="poster" alt="" /> <!-- Film poster from TMDB CDN -->
+          <div class="rec-meta"> <!-- Title, year, overview column -->
+            <h2 id="recTitle"></h2> <!-- Film title filled by JS -->
+            <p id="recYear" class="muted"></p> <!-- Release year -->
+            <p id="recOverview" class="overview"></p> <!-- Short plot text (CSS line-clamped) -->
+          </div> <!-- End rec-meta -->
+        </div> <!-- End rec-body -->
+        <p class="rate-label">How does this look for you?</p> <!-- Prompt above rating buttons -->
+        <div class="stars" id="rateRow" role="group" aria-label="Rate 1 to 5"> <!-- Accessibility: grouped rating controls -->
+          <button type="button" class="star-btn" data-rating="1" title="1">1</button> <!-- Lowest rating -->
+          <button type="button" class="star-btn" data-rating="2" title="2">2</button> <!-- Rating 2 -->
+          <button type="button" class="star-btn" data-rating="3" title="3">3</button> <!-- Neutral rating -->
+          <button type="button" class="star-btn" data-rating="4" title="4">4</button> <!-- Rating 4 -->
+          <button type="button" class="star-btn" data-rating="5" title="5">5</button> <!-- Highest rating -->
+        </div> <!-- End stars -->
+        <p id="recStatus" class="status-line" aria-live="polite"></p> <!-- Status/errors after rating or fetch -->
+      </section> <!-- End recommend -->
+
+      <section id="loading" class="card hidden"> <!-- Shown while TMDB requests run -->
+        <p class="loading-text">Finding a film…</p> <!-- Spinner-free loading message -->
+      </section> <!-- End loading -->
+
+      <footer class="footer"> <!-- Bottom actions -->
+        <button type="button" id="resetAll" class="btn ghost">Reset session</button> <!-- Clears stored session in JS -->
+      </footer> <!-- End footer -->
+    </div> <!-- End #app -->
+    <script src="popup.js"></script> <!-- Loads popup logic (MV3 extension page script) -->
+  </body> <!-- End body -->
+</html> <!-- End document -->

@@ -1,0 +1,25 @@
+<!DOCTYPE html> <!-- HTML5 doctype -->
+<html lang="en"> <!-- Document language English -->
+  <head> <!-- Head: title and CSS only -->
+    <meta charset="UTF-8" /> <!-- UTF-8 for special characters in copy/paste -->
+    <title>Next Movie Picker — Settings</title> <!-- Tab title for options page -->
+    <link rel="stylesheet" href="options.css" /> <!-- Styles the settings form -->
+  </head> <!-- End head -->
+  <body> <!-- Visible options UI -->
+    <main class="panel"> <!-- Constrains width and groups content -->
+      <h1>Settings</h1> <!-- Page heading -->
+      <p class="hint"> <!-- Help text with external link -->
+        Get a free key at
+        <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener">themoviedb.org/settings/api</a>.
+        It stays on this device only.
+      </p> <!-- End hint -->
+      <label for="apiKey">TMDB API key</label> <!-- Associates with input#apiKey -->
+      <input id="apiKey" type="password" autocomplete="off" placeholder="Paste your v3 API key" /> <!-- Masks key; options.js reads/writes -->
+      <div class="row"> <!-- Horizontal row: Save + status -->
+        <button type="button" id="save">Save</button> <!-- Persists key to chrome.storage.local -->
+        <span id="status" class="status" aria-live="polite"></span> <!-- "Saved." feedback -->
+      </div> <!-- End row -->
+    </main> <!-- End main -->
+    <script src="options.js"></script> <!-- Save handler and initial load -->
+  </body> <!-- End body -->
+</html> <!-- End html -->

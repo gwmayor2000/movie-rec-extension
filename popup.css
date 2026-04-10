@@ -1,0 +1,307 @@
+* {
+  /* Include padding and border in element width calculations */
+  box-sizing: border-box;
+}
+body {
+  /* Remove default page margin */
+  margin: 0;
+  /* Fixed width for extension popup panel */
+  width: 380px;
+  /* Minimum height so empty states do not collapse oddly */
+  min-height: 200px;
+  /* System font stack for native look */
+  font-family: "Segoe UI", system-ui, sans-serif;
+  /* Base text size */
+  font-size: 14px;
+  /* Dark background */
+  background: #0b0f14;
+  /* Light text on dark */
+  color: #e8edf2;
+}
+.app {
+  /* Inner padding around all popup content */
+  padding: 14px 14px 10px;
+}
+.header {
+  /* Title left, link right */
+  display: flex;
+  /* Align baselines of heading and link */
+  align-items: baseline;
+  /* Space between title and API key link */
+  justify-content: space-between;
+  /* Gap below header */
+  margin-bottom: 12px;
+}
+.header h1 {
+  /* Slightly smaller than default h1 for compact popup */
+  font-size: 1.05rem;
+  /* Bold title */
+  font-weight: 700;
+  /* Remove default heading margin */
+  margin: 0;
+  /* Tighter letter spacing */
+  letter-spacing: -0.02em;
+}
+.link {
+  /* Small link text */
+  font-size: 0.75rem;
+  /* Accent blue */
+  color: #6eb3ff;
+  /* No underline until hover */
+  text-decoration: none;
+}
+.link:hover {
+  /* Underline on hover for affordance */
+  text-decoration: underline;
+}
+.card {
+  /* Panel background */
+  background: #141b24;
+  /* Subtle border */
+  border: 1px solid #243040;
+  /* Rounded panel */
+  border-radius: 12px;
+  /* Inner spacing */
+  padding: 14px;
+  /* Space between stacked cards */
+  margin-bottom: 10px;
+}
+.lead {
+  /* Remove default paragraph margin */
+  margin: 0 0 12px;
+  /* Comfortable line height */
+  line-height: 1.45;
+  /* Muted body text */
+  color: #b8c3ce;
+  /* Slightly smaller intro copy */
+  font-size: 0.9rem;
+}
+.fav-grid {
+  /* Stack the three search rows vertically */
+  display: flex;
+  flex-direction: column;
+  /* Space between rows */
+  gap: 10px;
+  /* Space before Start button */
+  margin-bottom: 12px;
+}
+.fav-field {
+  /* Anchor absolute dropdown to this container */
+  position: relative;
+}
+.fav-field label {
+  /* Block label above input */
+  display: block;
+  /* Small caps-style label */
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  /* Muted grey */
+  color: #6b7c8c;
+  /* Space under label */
+  margin-bottom: 4px;
+}
+.fav-input {
+  /* Full row width */
+  width: 100%;
+  /* Comfortable padding */
+  padding: 8px 10px;
+  /* Rounded input */
+  border-radius: 8px;
+  /* Dark border */
+  border: 1px solid #2a3544;
+  /* Input field background */
+  background: #0f1419;
+  /* Light text */
+  color: #e8edf2;
+  /* Slightly smaller than body */
+  font-size: 0.88rem;
+}
+.fav-input:disabled {
+  /* Dim locked fields after a movie is picked */
+  opacity: 0.55;
+}
+.suggest {
+  /* No bullets on suggestion list */
+  list-style: none;
+  /* Tight vertical margin under input */
+  margin: 4px 0 0;
+  /* No extra left padding */
+  padding: 4px 0;
+  /* Scroll if many results */
+  max-height: 140px;
+  overflow-y: auto;
+  /* Dropdown panel color */
+  background: #1a232e;
+  border: 1px solid #2a3544;
+  border-radius: 8px;
+  /* Overlay above page */
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* Stack above inputs */
+  z-index: 5;
+  /* Drop shadow */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+.suggest li {
+  /* Clickable row padding */
+  padding: 8px 10px;
+  /* Pointer on hover */
+  cursor: pointer;
+  font-size: 0.82rem;
+  /* Separator between rows */
+  border-bottom: 1px solid #243040;
+}
+.suggest li:last-child {
+  /* No border on last item */
+  border-bottom: none;
+}
+.suggest li:hover {
+  /* Hover highlight */
+  background: #243040;
+}
+.picked {
+  /* Space under search */
+  margin-top: 6px;
+  font-size: 0.82rem;
+  /* Success green text */
+  color: #8fd99a;
+  padding: 6px 8px;
+  /* Subtle green tint background */
+  background: rgba(80, 180, 120, 0.12);
+  border-radius: 6px;
+}
+.hidden {
+  /* Utility: hide with !important to beat specificity */
+  display: none !important;
+}
+.btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  /* Flat button */
+  border: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn.primary {
+  /* Full width primary CTA */
+  width: 100%;
+  /* Blue gradient */
+  background: linear-gradient(180deg, #4a9eff, #2d7ae8);
+  color: #fff;
+}
+.btn.primary:disabled {
+  /* Grey out when three picks incomplete */
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn.ghost {
+  /* Transparent reset button */
+  background: transparent;
+  color: #7a8c9e;
+  font-weight: 500;
+  font-size: 0.78rem;
+  padding: 6px 8px;
+}
+.btn.ghost:hover {
+  /* Brighter on hover */
+  color: #b8c3ce;
+}
+.footer {
+  /* Center the reset control */
+  text-align: center;
+}
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7c8c;
+}
+.rec-body {
+  /* Poster and text side by side */
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.poster {
+  /* Fixed poster column width */
+  width: 92px;
+  height: auto;
+  border-radius: 8px;
+  /* Do not shrink when text is long */
+  flex-shrink: 0;
+  /* Placeholder color before image loads */
+  background: #243040;
+  object-fit: cover;
+}
+.rec-meta h2 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+.muted {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  color: #7a8c9e;
+}
+.overview {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: #a8b4c0;
+  /* WebKit multiline ellipsis */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.rate-label {
+  margin: 14px 0 8px;
+  font-size: 0.8rem;
+  color: #b8c3ce;
+}
+.stars {
+  /* Row of five equal buttons */
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+.star-btn {
+  /* Equal width columns */
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #2a3544;
+  background: #0f1419;
+  color: #e8edf2;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.star-btn:hover {
+  border-color: #4a9eff;
+  background: #1a2838;
+}
+.status-line {
+  margin: 10px 0 0;
+  min-height: 1.2em;
+  font-size: 0.78rem;
+  color: #8fd99a;
+}
+.loading-text {
+  margin: 0;
+  text-align: center;
+  color: #7a8c9e;
+  padding: 12px 0;
+}
+.setup-status {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  color: #f0a868;
+}
+.setup-status.hidden {
+  display: none !important;
+}

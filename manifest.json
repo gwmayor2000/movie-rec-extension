@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Next Movie Picker",
+  "version": "1.0.0",
+  "description": "Start from your top 3 films, get one recommendation at a time, and train picks with 1–5 ratings.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Next Movie Picker"
+  },
+  "options_page": "options.html",
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.themoviedb.org/*", "https://image.tmdb.org/*"]
+}
